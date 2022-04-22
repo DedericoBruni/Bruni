@@ -4,19 +4,19 @@ This package allows you to compute the standard deviation of a portfolio, whatev
 
 ------------------------------------------------------------------------------------------------------
 Arguments needed for .portfolio_std():
--list of the stock's tickers
--list of respective weights
--starting year from when collect data
--starting month from when collect data
--starting day from when collect data
+- list of the stock's tickers
+- list of respective weights
+- starting year from when collect data
+- starting month from when collect data
+- starting day from when collect data
 
 --------------------------------------
 
 Arguments needed for .portfolio_corr():
--list of the stock's tickers
--starting year from when to collect data
--starting month from when to collect data
--starting day from when to collect data
+- list of the stock's tickers
+- starting year from when to collect data
+- starting month from when to collect data
+- starting day from when to collect data
 
 --------------------------------------
 The algorithm for the computation of the standard deviation of the portfolio follow this formula and it's based on the returns of the stocks:
