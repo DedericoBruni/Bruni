@@ -27,22 +27,22 @@ The algorithm for the computation of the standard deviation of the portfolio fol
 ## Installation
 ```
 pip install Bruni
-
 ```
 
 ## Usage
+Correlation
 ```
 import Bruni.Pstd as bstd 
 
 tickers =['AAPL','MSFT','TSLA'] #caps tickers
 corr = bstd.portfolio_corr(tickers,2020,12,31) #getting the table of correlation
-
 ```
+
+Standard deviation
 ```
 import Bruni.Pstd as bstd
 
 tickers =['AAPL','MSFT','TSLA']
 weights = [0.1,0.5,0.4] #for std are needed weights
 std = bstd.portfolio_std(tickers,weights,2020,12,31) #weights must be passed in the function
-
 ```
