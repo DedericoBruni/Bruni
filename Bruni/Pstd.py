@@ -61,11 +61,11 @@ def portfolio_return(tickers,weights,Year,Month,Day):
     return data.mean().dot(weights)
 
 def find_best_allocation(tickers,Year,Month,Day,N):
+    import pandas as pd
+    import numpy as np
+    import pandas_datareader as pdr
+    import datetime as dt
     def returns(tickers,Year,Month,Day):
-        import pandas as pd
-        import numpy as np
-        import pandas_datareader as pdr
-        import datetime as dt
         dim = len(tickers)
         start = dt.datetime(Year, Month, Day)
         data = pd.DataFrame()
