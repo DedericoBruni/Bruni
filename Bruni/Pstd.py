@@ -6,7 +6,6 @@ def portfolio_std(tickers, weights,Year,Month,Day):
     dim = len(tickers)
     start = dt.datetime(Year, Month, Day)
     data = pd.DataFrame()
-    std_list = []
 
     i = 0
     for i in range(dim):
@@ -16,31 +15,10 @@ def portfolio_std(tickers, weights,Year,Month,Day):
         df = df.dropna()
         df1 = pd.DataFrame(df['Returns']).copy()
         data[tickers[i]] = df1['Returns']
-        std_ = df['Returns'].std()
-        std_ = str(round(std_, 2))
-        std_list.append(std_)
-    std_list = np.array(std_list, dtype=np.float32)
-    corr = data.corr()
-    i = 0
-    for i in range(len(tickers)):
-        corr = corr.rename(columns={tickers[i]: i})
-
-    i = 0
-    j = 0
-    k = 0
-    for i in range(len(tickers)):
-        k = k + (weights[i] ** 2) * (std_list[i] ** 2)
-
-    i = 0
-    g = 0
-    j = 0
-    for i in range(len(tickers)):
-        j = i + 1
-        while j < len(tickers):
-            g = g + 2 * weights[i] * weights[j] * std_list[i] * std_list[j] * round(corr[j].iloc[i], 6)
-            j = j + 1
-    portfolio_std = round((g + k) ** 0.5, 6)
-    return portfolio_std
+    weights = np.array(weights, dtype=np.float32)
+    cov = data.cov().to_numpy()
+    risk = np.sqrt(weights.dot(cov).dot(weights))
+    return risk
 
 def portfolio_corr(tickers,Year,Month,Day):
     import pandas as pd
